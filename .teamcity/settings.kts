@@ -94,7 +94,6 @@ object BuildSite2 : BuildType({
             name = "dotnet publish"
             projects = projectPath
             configuration = configuration
-            args = "--no-build"
         }
     }
 })
