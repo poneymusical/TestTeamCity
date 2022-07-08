@@ -73,7 +73,7 @@ object BuildSite2 : BuildType({
 
     name = "Build site"
     publishArtifacts = PublishMode.SUCCESSFUL
-    artifactRules = outputDirectoryPath
+    artifactRules = outputDirectoryPath + " => site"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -97,5 +97,6 @@ object BuildSite2 : BuildType({
             configuration = buildConfiguration
             outputDir = outputDirectoryPath
         }
+
     }
 })

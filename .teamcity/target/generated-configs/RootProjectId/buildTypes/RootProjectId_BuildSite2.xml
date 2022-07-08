@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="" xsi:noNamespaceSchemaLocation="https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd">
-  <name>Build classlib</name>
+  <name>Build site</name>
   <description />
   <settings>
     <options>
-      <option name="artifactRules" value="src/TestTeamCity.ClassLib/bin/Release/TestTeamCity.ClassLib.*.nupkg" />
+      <option name="artifactRules" value="output/site =&gt; site" />
       <option name="publishArtifactCondition" value="SUCCESSFUL" />
     </options>
     <parameters />
@@ -13,16 +13,16 @@
         <parameters>
           <param name="command" value="build" />
           <param name="configuration" value="Release" />
-          <param name="paths" value="src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj" />
+          <param name="paths" value="src/TestTeamCity.Site/TestTeamCity.Site.csproj" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
-      <runner id="RUNNER_2" name="dotnet pack" type="dotnet">
+      <runner id="RUNNER_2" name="dotnet publish" type="dotnet">
         <parameters>
-          <param name="args" value="--no-build" />
-          <param name="command" value="pack" />
+          <param name="command" value="publish" />
           <param name="configuration" value="Release" />
-          <param name="paths" value="src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj" />
+          <param name="outputDir" value="output/site" />
+          <param name="paths" value="src/TestTeamCity.Site/TestTeamCity.Site.csproj" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
