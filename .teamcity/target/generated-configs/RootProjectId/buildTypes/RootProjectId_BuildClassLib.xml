@@ -21,6 +21,7 @@
         <parameters>
           <param name="command" value="test" />
           <param name="configuration" value="Release" />
+          <param name="dotNetCoverage.dotCover.filters" value="+:TestTeamCity.ClassLib" />
           <param name="dotNetCoverage.tool" value="dotcover" />
           <param name="paths" value="test/TestTeamCity.ClassLib.Tests/TestTeamCity.ClassLib.Tests.csproj" />
           <param name="teamcity.step.mode" value="default" />

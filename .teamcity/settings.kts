@@ -62,7 +62,9 @@ object BuildClassLib : BuildType({
             name = "dotnet test"
             projects = "test/TestTeamCity.ClassLib.Tests/TestTeamCity.ClassLib.Tests.csproj"
             configuration = buildConfiguration
-            coverage = dotcover()
+            coverage = dotcover({
+                assemblyFilters = "+:TestTeamCity.ClassLib"
+            })
         }
         dotnetPack {
             name = "dotnet pack"
