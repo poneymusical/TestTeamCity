@@ -30,7 +30,7 @@ version = "2022.04"
 
 project {
     buildType(BuildClassLib)
-    buildType(BuildSite)
+    buildType(BuildSite2)
 }
 
 object BuildClassLib : BuildType({
@@ -66,7 +66,7 @@ object BuildClassLib : BuildType({
     }
 })
 
-object BuildSite : BuildType({
+object BuildSite2 : BuildType({
     name = "Build site"
     publishArtifacts = PublishMode.SUCCESSFUL
     artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0"
