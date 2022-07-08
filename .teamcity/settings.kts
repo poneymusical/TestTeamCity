@@ -1,7 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
-import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetNugetPush
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPack
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPublish
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -34,9 +34,11 @@ project {
 
 object BuildClassLib : BuildType({
     name = "Build classlib"
-
     publishArtifacts = PublishMode.SUCCESSFUL
     artifactRules = "src/TestTeamCity.ClassLib/bin/Release/TestTeamCity.ClassLib.*.nupkg"
+
+    var projectPath = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
+    var configuration = "Release"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -51,13 +53,46 @@ object BuildClassLib : BuildType({
     steps {
         dotnetBuild {
             name = "dotnet build"
-            projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
-            configuration = "Release"
+            projects = projectPath
+            configuration = configuration
         }
         dotnetPack {
             name = "dotnet pack"
-            projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
-            configuration = "Release"
+            projects = projectPath
+            configuration = configuration
+            args = "--no-build"
+        }
+    }
+})
+
+object BuildSite : BuildType({
+    name = "Build site"
+    publishArtifacts = PublishMode.SUCCESSFUL
+    artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0"
+
+    var projectPath = "src/TestTeamCity.Site/TestTeamCity.Site.csproj"
+    var configuration = "Release"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+        }
+    }
+
+    steps {
+        dotnetBuild {
+            name = "dotnet build"
+            projects = projectPath
+            configuration = configuration
+        }
+        dotnetPublish {
+            name = "dotnet publish"
+            projects = projectPath
+            configuration = configuration
             args = "--no-build"
         }
     }

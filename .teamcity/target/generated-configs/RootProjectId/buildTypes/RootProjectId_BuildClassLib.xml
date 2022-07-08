@@ -12,7 +12,6 @@
       <runner id="RUNNER_1" name="dotnet build" type="dotnet">
         <parameters>
           <param name="command" value="build" />
-          <param name="configuration" value="Release" />
           <param name="paths" value="src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
@@ -21,7 +20,6 @@
         <parameters>
           <param name="args" value="--no-build" />
           <param name="command" value="pack" />
-          <param name="configuration" value="Release" />
           <param name="paths" value="src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj" />
           <param name="teamcity.step.mode" value="default" />
         </parameters>
