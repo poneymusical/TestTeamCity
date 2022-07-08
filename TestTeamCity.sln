@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTeamCity.ClassLib", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTeamCity.Site", "src\TestTeamCity.Site\TestTeamCity.Site.csproj", "{2E59E74C-0B38-4556-AF85-CF14C2A172BF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D9F97BF3-8C19-4915-9BB5-B34CBE764246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTeamCity.ClassLib.Tests", "test\TestTeamCity.ClassLib.Tests\TestTeamCity.ClassLib.Tests.csproj", "{11E02C34-C2E7-43B7-AC93-0FCA0E407A20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +30,14 @@ Global
 		{2E59E74C-0B38-4556-AF85-CF14C2A172BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E59E74C-0B38-4556-AF85-CF14C2A172BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E59E74C-0B38-4556-AF85-CF14C2A172BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11E02C34-C2E7-43B7-AC93-0FCA0E407A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E02C34-C2E7-43B7-AC93-0FCA0E407A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E02C34-C2E7-43B7-AC93-0FCA0E407A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E02C34-C2E7-43B7-AC93-0FCA0E407A20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0271D7AA-8112-44A9-B63A-B485B4BF233E} = {CF17C1E7-6E86-4A50-A4D9-AC84E55C06F9}
 		{2E59E74C-0B38-4556-AF85-CF14C2A172BF} = {CF17C1E7-6E86-4A50-A4D9-AC84E55C06F9}
+		{11E02C34-C2E7-43B7-AC93-0FCA0E407A20} = {D9F97BF3-8C19-4915-9BB5-B34CBE764246}
 	EndGlobalSection
 EndGlobal

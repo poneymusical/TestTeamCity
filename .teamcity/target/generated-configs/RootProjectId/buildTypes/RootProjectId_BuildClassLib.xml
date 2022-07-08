@@ -17,7 +17,16 @@
           <param name="teamcity.step.mode" value="default" />
         </parameters>
       </runner>
-      <runner id="RUNNER_2" name="dotnet pack" type="dotnet">
+      <runner id="RUNNER_2" name="dotnet test" type="dotnet">
+        <parameters>
+          <param name="command" value="test" />
+          <param name="configuration" value="Release" />
+          <param name="dotNetCoverage.tool" value="dotcover" />
+          <param name="paths" value="test/TestTeamCity.ClassLib.Tests/TestTeamCity.ClassLib.Tests.csproj" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+      <runner id="RUNNER_3" name="dotnet pack" type="dotnet">
         <parameters>
           <param name="args" value="--no-build" />
           <param name="command" value="pack" />

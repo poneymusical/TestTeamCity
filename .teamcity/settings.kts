@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPack
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPublish
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetTest
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -56,6 +57,12 @@ object BuildClassLib : BuildType({
             name = "dotnet build"
             projects = projectPath
             configuration = buildConfiguration
+        }
+        dotnetTest {
+            name = "dotnet test"
+            projects = "test/TestTeamCity.ClassLib.Tests/TestTeamCity.ClassLib.Tests.csproj"
+            configuration = buildConfiguration
+            coverage = dotcover()
         }
         dotnetPack {
             name = "dotnet pack"
