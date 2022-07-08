@@ -1,7 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetNugetPush
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPack
-import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -35,23 +35,30 @@ project {
 object BuildClassLib : BuildType({
     name = "Build classlib"
 
+    publishArtifacts = PublishMode.SUCCESSFUL
+    artifactRules = "src/TestTeamCity.ClassLib/bin/Release/TestTeamCity.ClassLib.*.nupkg"
+
     vcs {
         root(DslContext.settingsRoot)
     }
 
     triggers {
         vcs {
-            perCheckinTriggering = true
-            enableQueueOptimization = true
+            branchFilter = "+:<default>"
         }
     }
 
     steps {
         dotnetBuild {
+            name = "dotnet build"
             projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
+            configuration = "Release"
         }
         dotnetPack {
+            name = "dotnet pack"
             projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
+            configuration = "Release"
+            args = "--no-build"
         }
     }
 })
