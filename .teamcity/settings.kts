@@ -30,6 +30,7 @@ version = "2022.04"
 
 project {
     buildType(BuildClassLib)
+    buildType(BuildSite)
 }
 
 object BuildClassLib : BuildType({
