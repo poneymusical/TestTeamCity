@@ -1,4 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -27,11 +28,11 @@ version = "2022.04"
 
 project {
 
-    buildType(Build)
+    buildType(BuildClassLib)
 }
 
-object Build : BuildType({
-    name = "Build"
+object BuildClassLib : BuildType({
+    name = "Build classlib"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -39,6 +40,12 @@ object Build : BuildType({
 
     triggers {
         vcs {
+        }
+    }
+
+    steps {
+        script {
+            scriptContent = "echo 'Hello World!'"
         }
     }
 })
