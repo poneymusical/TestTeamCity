@@ -30,7 +30,7 @@ version = "2022.04"
 
 project {
     buildType(BuildClassLib)
-
+    buildType(BuildSite)
 }
 
 object BuildClassLib : BuildType({
@@ -59,6 +59,39 @@ object BuildClassLib : BuildType({
         }
         dotnetPack {
             name = "dotnet pack"
+            projects = projectPath
+            configuration = configuration
+            args = "--no-build"
+        }
+    }
+})
+
+object BuildSite : BuildType({
+    name = "Build site"
+    publishArtifacts = PublishMode.SUCCESSFUL
+    artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0"
+
+    var projectPath = "src/TestTeamCity.Site/TestTeamCity.Site.csproj"
+    var configuration = "Release"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        vcs {
+            branchFilter = "+:<default>"
+        }
+    }
+
+    steps {
+        dotnetBuild {
+            name = "dotnet build"
+            projects = projectPath
+            configuration = configuration
+        }
+        dotnetPublish {
+            name = "dotnet publish"
             projects = projectPath
             configuration = configuration
             args = "--no-build"
