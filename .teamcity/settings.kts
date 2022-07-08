@@ -63,6 +63,7 @@ object BuildClassLib : BuildType({
             projects = "test/TestTeamCity.ClassLib.Tests/TestTeamCity.ClassLib.Tests.csproj"
             configuration = buildConfiguration
             coverage = dotcover({
+                toolPath = "%teamcity.tool.JetBrains.dotCover.CommandLineTools.bundled%"
                 assemblyFilters = "+:TestTeamCity.ClassLib"
             })
         }
