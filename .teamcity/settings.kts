@@ -1,4 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetPack
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
@@ -27,7 +29,6 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2022.04"
 
 project {
-
     buildType(BuildClassLib)
 }
 
@@ -44,8 +45,11 @@ object BuildClassLib : BuildType({
     }
 
     steps {
-        script {
-            scriptContent = "echo 'Hello World!'"
+        dotnetBuild {
+            projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
+        }
+        dotnetPack {
+            projects = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
         }
     }
 })
