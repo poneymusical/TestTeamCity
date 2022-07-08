@@ -39,7 +39,7 @@ object BuildClassLib : BuildType({
     artifactRules = "src/TestTeamCity.ClassLib/bin/Release/TestTeamCity.ClassLib.*.nupkg"
 
     var projectPath = "src/TestTeamCity.ClassLib/TestTeamCity.ClassLib.csproj"
-    var configuration = "Release"
+    var buildConfiguration = "Release"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -55,12 +55,12 @@ object BuildClassLib : BuildType({
         dotnetBuild {
             name = "dotnet build"
             projects = projectPath
-            configuration = configuration
+            configuration = buildConfiguration
         }
         dotnetPack {
             name = "dotnet pack"
             projects = projectPath
-            configuration = configuration
+            configuration = buildConfiguration
             args = "--no-build"
         }
     }
@@ -72,7 +72,7 @@ object BuildSite2 : BuildType({
     artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0/*"
 
     var projectPath = "src/TestTeamCity.Site/TestTeamCity.Site.csproj"
-    var configuration = "Release"
+    var buildConfiguration = "Release"
 
     vcs {
         root(DslContext.settingsRoot)
@@ -88,12 +88,12 @@ object BuildSite2 : BuildType({
         dotnetBuild {
             name = "dotnet build"
             projects = projectPath
-            configuration = configuration
+            configuration = buildConfiguration
         }
         dotnetPublish {
             name = "dotnet publish"
             projects = projectPath
-            configuration = configuration
+            configuration = buildConfiguration
         }
     }
 })
