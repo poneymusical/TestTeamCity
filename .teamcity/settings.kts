@@ -67,12 +67,13 @@ object BuildClassLib : BuildType({
 })
 
 object BuildSite2 : BuildType({
-    name = "Build site"
-    publishArtifacts = PublishMode.SUCCESSFUL
-    artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0/*"
-
+    var outputDirectoryPath = "output/site"
     var projectPath = "src/TestTeamCity.Site/TestTeamCity.Site.csproj"
     var buildConfiguration = "Release"
+
+    name = "Build site"
+    publishArtifacts = PublishMode.SUCCESSFUL
+    artifactRules = outputDirectoryPath
 
     vcs {
         root(DslContext.settingsRoot)
@@ -94,6 +95,7 @@ object BuildSite2 : BuildType({
             name = "dotnet publish"
             projects = projectPath
             configuration = buildConfiguration
+            outputDir = outputDirectoryPath
         }
     }
 })
