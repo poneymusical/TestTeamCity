@@ -69,7 +69,7 @@ object BuildClassLib : BuildType({
 object BuildSite2 : BuildType({
     name = "Build site"
     publishArtifacts = PublishMode.SUCCESSFUL
-    artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0"
+    artifactRules = "src/TestTeamCity.Site/bin/Release/net6.0/*"
 
     var projectPath = "src/TestTeamCity.Site/TestTeamCity.Site.csproj"
     var configuration = "Release"
