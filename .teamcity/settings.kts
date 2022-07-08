@@ -41,6 +41,8 @@ object BuildClassLib : BuildType({
 
     triggers {
         vcs {
+            perCheckinTriggering = true
+            enableQueueOptimization = true
         }
     }
 
